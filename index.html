@@ -9,7 +9,7 @@
     <style>
         /* Set the background image for the entire page */
         body {
-            background-image: url('5995771028760742850.jpg'); /* Path to your image */
+            background-image: url('images/background.jpg'); /* Path to your image */
             background-size: cover; /* Ensure the image covers the entire background */
             background-position: center; /* Center the image */
             background-attachment: fixed; /* Make the background fixed while scrolling */
@@ -25,23 +25,59 @@
             text-align: center;
             padding: 20px;
             max-width: 600px;
-            margin: 6px auto; /* Adjust this value to move the text higher or lower */
+            margin: 5px auto; /* Adjust this value to move the text higher or lower */
             background-color: rgba(0, 0, 0, 0.6); /* Add a dark overlay for readability */
             border-radius: 10px;
+        }
+
+        /* Play button styles */
+        #playButton {
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: block;
+            text-align: center;
+        }
+
+        /* Hide the audio player by default */
+        audio {
+            display: none;
         }
     </style>
 </head>
 <body>
+    <!-- Poem Content -->
     <p><strong>Nel tuo sorriso trovo il mio cielo,</strong><br>
     ogni tuo sguardo è un dolce velo.<br>
     Con te ogni giorno è un sogno che dura,<br>
     sei la mia luce, la mia avventura.</p>
 
-     <!-- Audio Player -->
-    <audio autoplay loop>
+    <!-- Audio Player (hidden by default) -->
+    <audio id="backgroundMusic">
         <source src="nuages_dreams.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
+    <!-- Play Button -->
+    <button id="playButton">Play Music</button>
+
+    <script>
+        // Get the audio element and play button
+        const audio = document.getElementById('backgroundMusic');
+        const playButton = document.getElementById('playButton');
+
+        // Add event listener to the play button
+        playButton.addEventListener('click', function() {
+            // Play the audio
+            audio.play();
+            // Hide the play button after it's clicked
+            playButton.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
